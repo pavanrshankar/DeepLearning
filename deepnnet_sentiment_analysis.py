@@ -7,6 +7,10 @@ from senti_anal_helper import create_feature_sets_and_labels
 Accuracy: 68%
 
 Data: (input, label) -> ([feature vector], [pos-neg vector])
+
+Description: Input file is scanned and word/feature collection is prepared. Every 
+statement is converted to feature vector along with pos([1,0]) or neg([0,1]) label. 
+Data is fed into deep neural network with 2 hidden layers and 1500 nodes in each layer. 
 #######################################################################################
 '''
 
