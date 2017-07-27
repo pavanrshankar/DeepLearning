@@ -9,11 +9,12 @@ Data: (input, label) -> ([784 pixel vector], [10 class result vector])
 
 Description: Input is fed into NN in batch size of 100 for 10 epochs where each epoch
 covers entire data set. Weights are randomly set using truncated_normal with stddev
-of 0.1 to ensure small initial weights. All selected weights beyond 2 steps of stddev
-from mean are discarded and reselected. AdamOptimizer uses small steps of 0.001 and
-weights are pushed to change due to small biases that fire up the neurons, thereby
-contributing to result and in turn allowing backpropagation algorithm to change weight
-of nodes that influenced the result(Inactive node weights remain unaltered)
+of 0.1 to ensure small initial weights as large weights tend to change to behaviour of 
+output drastically. All selected weights beyond 2 steps of stddev from mean are discarded 
+and reselected. AdamOptimizer uses small steps of 0.001 and weights are pushed to change 
+due to small biases that fire up the neurons, thereby contributing to result and in turn 
+allowing backpropagation algorithm to change weight of nodes that influenced the 
+result(Inactive node weights remain unaltered)
 #######################################################################################
 '''
 
@@ -52,6 +53,7 @@ def train_neural_network():
 			epoch_loss = 0
 			for _ in range(int(mnsit.train.num_examples/batch_size)):
 				a, b = mnsit.train.next_batch(batch_size)
+				print(a.shape)
 				_, c = sess.run([optimizer, cost], feed_dict = {x: a, y: b})
 				epoch_loss += c
 			print('Epoch ', epoch, ' completed out of ', total_epochs, ' loss:', epoch_loss)
