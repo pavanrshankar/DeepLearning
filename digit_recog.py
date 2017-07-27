@@ -9,7 +9,7 @@ Data: (input, label) -> ([784 pixel vector], [10 class result vector])
 
 Description: Input is fed into NN in batch size of 100 for 10 epochs where each epoch
 covers entire data set. Weights are randomly set using truncated_normal with stddev
-of 0.1 to ensure small initial weights as large weights tend to change to behaviour of 
+of 0.1 to ensure small initial weights as large weights tend to change behaviour of 
 output drastically. All selected weights beyond 2 steps of stddev from mean are discarded 
 and reselected. AdamOptimizer uses small steps of 0.001 and weights are pushed to change 
 due to small biases that fire up the neurons, thereby contributing to result and in turn 
